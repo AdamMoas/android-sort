@@ -7,9 +7,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
+import com.moas.adam.lib.BubbleSort;
+
+import java.util.Arrays;
+
 public class MainActivity extends AppCompatActivity {
 
-    private TextView mTextMessage;
+    BottomNavigationView navigation;
+
+    private TextView unsortedMessage;
+    private TextView bubbleSortMessage;
+
+    private TextView unsortedTextView;
+    private TextView sortedTextView;
+
+    private BubbleSort bubbleSort;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -18,13 +30,10 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    mTextMessage.setText(R.string.title_home);
                     return true;
                 case R.id.navigation_dashboard:
-                    mTextMessage.setText(R.string.title_dashboard);
                     return true;
                 case R.id.navigation_notifications:
-                    mTextMessage.setText(R.string.title_notifications);
                     return true;
             }
             return false;
@@ -36,9 +45,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mTextMessage = (TextView) findViewById(R.id.message);
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
+        int[] exampleNumbers = {1, 4, 2, 7, 5, 3, 9, 8, 6, 0};
+        int[] numbers = {1, 4, 2, 7, 5, 3, 9, 8, 6, 0};
+        bubbleSort = new BubbleSort(numbers);
+
+        unsortedMessage = findViewById(R.id.tvBeforeSort);
+        bubbleSortMessage = findViewById(R.id.tvAfterSort);
+        unsortedTextView = findViewById(R.id.tvUnsortedOutput);
+        sortedTextView = findViewById(R.id.tvBubbleSortOutput);
+
+        navigation = findViewById(R.id.navigation);
+
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        unsortedMessage.setText(R.string.before_sort);
+        bubbleSortMessage.setText(R.string.after_sort);
+
+        unsortedTextView.setText(Arrays.toString(exampleNumbers));
+        sortedTextView.setText(Arrays.toString(bubbleSort.getSortedOutput()));
     }
 
 }
