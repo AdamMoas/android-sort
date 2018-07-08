@@ -5,6 +5,8 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import com.moas.adam.lib.BubbleSort;
@@ -22,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView sortedTextView;
 
     private BubbleSort bubbleSort;
+
+    private TextView position0, position1, position2;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -54,6 +58,10 @@ public class MainActivity extends AppCompatActivity {
         unsortedTextView = findViewById(R.id.tvUnsortedOutput);
         sortedTextView = findViewById(R.id.tvBubbleSortOutput);
 
+        position0 = findViewById(R.id.position0);
+        position1 = findViewById(R.id.position1);
+        position2 = findViewById(R.id.position2);
+
         navigation = findViewById(R.id.navigation);
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
@@ -63,6 +71,10 @@ public class MainActivity extends AppCompatActivity {
 
         unsortedTextView.setText(Arrays.toString(exampleNumbers));
         sortedTextView.setText(Arrays.toString(bubbleSort.getSortedOutput()));
+
+        Animation swapAnimation = AnimationUtils.loadAnimation(this, R.anim.swap);
+        position0.startAnimation(swapAnimation);
+
     }
 
 }
