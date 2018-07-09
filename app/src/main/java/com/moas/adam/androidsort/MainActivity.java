@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
@@ -72,9 +73,17 @@ public class MainActivity extends AppCompatActivity {
         unsortedTextView.setText(Arrays.toString(exampleNumbers));
         sortedTextView.setText(Arrays.toString(bubbleSort.getSortedOutput()));
 
-        Animation swapAnimation = AnimationUtils.loadAnimation(this, R.anim.swap);
-        position0.startAnimation(swapAnimation);
+        swapElements(position0, position1);
 
     }
+
+    private void swapElements(View leftView, View rightView) {
+        Animation swapLeft = AnimationUtils.loadAnimation(this, R.anim.swap_left);
+        leftView.startAnimation(swapLeft);
+
+        Animation swapRight = AnimationUtils.loadAnimation(this, R.anim.swap_right);
+        rightView.startAnimation(swapRight);
+    }
+
 
 }
