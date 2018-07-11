@@ -6,6 +6,8 @@ buildscript {
         support_version = '27.1.1'
         constraint_version = '1.1.2'
 
+        butterknife_version = '8.8.1'
+
         junit_version = '4.12'
         test_runner_version = '1.0.2'
         espresso_version = '3.0.2'

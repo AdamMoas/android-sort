@@ -13,20 +13,26 @@ import android.widget.TextView;
 import com.moas.adam.lib.BubbleSort;
 
 import java.util.Arrays;
+import java.util.List;
+
+import butterknife.BindView;
+import butterknife.BindViews;
+import butterknife.ButterKnife;
 
 public class MainActivity extends AppCompatActivity {
 
+    @BindView(R.id.navigation)
     BottomNavigationView navigation;
-
-    private TextView unsortedMessage;
-    private TextView bubbleSortMessage;
-
-    private TextView unsortedTextView;
-    private TextView sortedTextView;
-
-    private BubbleSort bubbleSort;
-
-    private TextView position0, position1, position2;
+    @BindView(R.id.tvBeforeSort)
+    TextView unsortedMessage;
+    @BindView(R.id.tvAfterSort)
+    TextView bubbleSortMessage;
+    @BindView(R.id.tvUnsortedOutput)
+    TextView unsortedTextView;
+    @BindView(R.id.tvBubbleSortOutput)
+    TextView sortedTextView;
+    @BindViews({R.id.position0, R.id.position1, R.id.position2})
+    List<TextView> positions;
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -49,21 +55,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
 
         int[] exampleNumbers = {1, 4, 2, 7, 5, 3, 9, 8, 6, 0};
         int[] numbers = {1, 4, 2, 7, 5, 3, 9, 8, 6, 0};
-        bubbleSort = new BubbleSort(numbers);
-
-        unsortedMessage = findViewById(R.id.tvBeforeSort);
-        bubbleSortMessage = findViewById(R.id.tvAfterSort);
-        unsortedTextView = findViewById(R.id.tvUnsortedOutput);
-        sortedTextView = findViewById(R.id.tvBubbleSortOutput);
-
-        position0 = findViewById(R.id.position0);
-        position1 = findViewById(R.id.position1);
-        position2 = findViewById(R.id.position2);
-
-        navigation = findViewById(R.id.navigation);
+        BubbleSort bubbleSort = new BubbleSort(numbers);
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
@@ -73,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
         unsortedTextView.setText(Arrays.toString(exampleNumbers));
         sortedTextView.setText(Arrays.toString(bubbleSort.getSortedOutput()));
 
-        swapElements(position0, position1);
+        swapElements(positions.get(0), positions.get(1));
 
     }
 
