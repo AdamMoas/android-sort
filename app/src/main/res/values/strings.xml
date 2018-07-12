@@ -6,4 +6,6 @@
 
     <string name="before_sort">Unsorted: </string>
     <string name="after_sort">Sorted: </string>
+
+    <string name="animation_heading">BubblesSort</string>
 </resources>
