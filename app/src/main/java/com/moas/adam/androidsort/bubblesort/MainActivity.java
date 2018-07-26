@@ -1,4 +1,4 @@
-package com.moas.adam.androidsort;
+package com.moas.adam.androidsort.bubblesort;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,6 +10,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
+import com.moas.adam.androidsort.R;
 import com.moas.adam.lib.BubbleSort;
 
 import java.util.Arrays;
