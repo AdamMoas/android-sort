@@ -1,4 +1,20 @@
 package com.moas.adam.androidsort.bubblesort;
 
-public class BubbleSortPresenter {
+import android.support.annotation.NonNull;
+
+import static com.google.common.base.Preconditions.checkNotNull;
+
+public class BubbleSortPresenter implements BubbleSortContract.Presenter {
+
+    private BubbleSortContract.View bubbleSortView;
+
+    BubbleSortPresenter(@NonNull BubbleSortContract.View bubbleSortView) {
+        this.bubbleSortView = checkNotNull(bubbleSortView);
+        this.bubbleSortView.setPresenter(this);
+    }
+
+    @Override
+    public void start() {
+
+    }
 }
