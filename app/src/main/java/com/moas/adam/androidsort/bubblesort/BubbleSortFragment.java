@@ -92,7 +92,7 @@ public class BubbleSortFragment extends Fragment implements BubbleSortContract.V
 
         swapElements(positions.get(0), positions.get(1));
 
-        return super.onCreateView(inflater, container, savedInstanceState);
+        return root;
     }
 
     private void swapElements(View leftView, View rightView) {
