@@ -6,9 +6,9 @@ import static com.google.common.base.Preconditions.checkNotNull;
 
 public class BubbleSortPresenter implements BubbleSortContract.Presenter {
 
-    private BubbleSortContract.View bubbleSortView;
+    private BubbleSortContract.MainView bubbleSortView;
 
-    BubbleSortPresenter(@NonNull BubbleSortContract.View bubbleSortView) {
+    BubbleSortPresenter(@NonNull BubbleSortContract.MainView bubbleSortView) {
         this.bubbleSortView = checkNotNull(bubbleSortView);
         this.bubbleSortView.setPresenter(this);
     }

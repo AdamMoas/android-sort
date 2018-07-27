@@ -26,7 +26,7 @@ import butterknife.BindView;
 import butterknife.BindViews;
 import butterknife.ButterKnife;
 
-public class BubbleSortFragment extends Fragment implements BubbleSortContract.View {
+public class BubbleSortFragment extends Fragment implements BubbleSortContract.MainView {
 
     @NonNull
     private static final String ARGUMENT_BUBBLE_SORT_ID = "BUBBLE_SORT_ID";
@@ -74,7 +74,7 @@ public class BubbleSortFragment extends Fragment implements BubbleSortContract.V
 
     @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.bubble_sort_fragment, container, false);
         ButterKnife.bind(this, root);
 
@@ -95,7 +95,8 @@ public class BubbleSortFragment extends Fragment implements BubbleSortContract.V
         return root;
     }
 
-    private void swapElements(View leftView, View rightView) {
+    @Override
+    public void swapElements(View leftView, View rightView) {
         Animation swapLeft = AnimationUtils.loadAnimation(getContext(), R.anim.swap_left);
         leftView.startAnimation(swapLeft);
 
